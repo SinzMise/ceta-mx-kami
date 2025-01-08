@@ -66,9 +66,11 @@ export const FriendSection: FC<FriendSectionProps> = ({ data }) => {
     <div className="<sm:grid-cols-1 grid grid-cols-2 gap-6">
       {data.map((link, i) => {
         return (
-          <BottomToUpTransitionView key={link.id} timeout={{ enter: 50 * i }}>
-            <Card link={link} />
-          </BottomToUpTransitionView>
+          <div className="friend-item">
+            <BottomToUpTransitionView key={link.id} timeout={{ enter: 50 * i }}>
+              <Card link={link} />
+            </BottomToUpTransitionView>
+          </div>
         )
       })}
     </div>
@@ -82,7 +84,7 @@ const Card: FC<{ link: LinkModel }> = ({ link }) => {
     <a
       href={link.url}
       target="_blank"
-      className={styles['card']}
+      className={styles['card']} + ' link'
       onMouseEnter={useCallback(() => {
         setFocus(true)
       }, [])}
@@ -90,9 +92,9 @@ const Card: FC<{ link: LinkModel }> = ({ link }) => {
         setFocus(false)
       }, [])}
     >
-      <CircleAvatar focus={focused} size={80} src={link.avatar} />
+      <CircleAvatar focus={focused} size={80} src={link.avatar} className='avatar' />
       <span className="flex h-full flex-col justify-start space-y-2 py-3">
-        <span className="text-lg">{link.name}</span>
+        <span className="text-lg username">{link.name}</span>
         <span className="text-deepgray line-clamp-2 break-all text-sm">
           {link.description}
         </span>
