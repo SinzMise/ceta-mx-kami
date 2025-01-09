@@ -84,7 +84,7 @@ const Card: FC<{ link: LinkModel }> = ({ link }) => {
     <a
       href={link.url}
       target="_blank"
-      className={styles['card'] + 'links fc-link'}
+      className={styles['card'] + ' fc-link'}
       onMouseEnter={useCallback(() => {
         setFocus(true)
       }, [])}
